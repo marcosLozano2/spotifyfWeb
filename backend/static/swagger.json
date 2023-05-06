@@ -1,0 +1,120 @@
+---
+swagger: "2.0"
+info:
+  title: "Songs API"
+  description: "API for managing songs"
+  version: "1.0"
+host: "localhost:5000"
+basePath: "/"
+schemes:
+  - "http"
+paths:
+  /songs:
+    get:
+      tags:
+        - "Songs"
+      summary: "Get all songs"
+      description: "Returns a list of all songs in the database"
+      responses:
+        200:
+          description: "A list of songs"
+          schema:
+            type: "array"
+            items:
+             
+    post:
+      tags:
+        - "Songs"
+      summary: "Create a new song"
+      description: "Adds a new song to the database"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Song object to be added"
+          required: true
+          schema:
+            
+      responses:
+        200:
+          description: "The newly created song"
+          schema:
+            
+              
+  /songs/{id}:
+    get:
+      tags:
+        - "songs"
+      summary: "Get a specific song by ID"
+      description: ""
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of the song to get"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "string"
+              songName:
+                type: "string"
+              artistName:
+                type: "string"
+              duration:
+                type: "number"
+        404:
+          description: "Song not found"
+    delete:
+      tags:
+        - "songs"
+      summary: "Delete a song by ID"
+      description: ""
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of the song to delete"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "object"
+            properties:
+              status:
+                type: "string"
+        404:
+          description: "Song not found"
+    put:
+      responses:
+       default:   # <-----
+         description: Description of the default response
+      tags:
+        - "songs"
+      summary: "Update a song by ID"
+      description: ""
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of the song to update"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "body"
+          description: "Updated song object"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              songName:
+                type: "string"
